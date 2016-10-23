@@ -3,6 +3,7 @@
 
 
 Check out the repository
+
 Install Dependencies
 
 ```bash
@@ -30,6 +31,7 @@ Starting localhost
   ```
 
 Open a browser and visit localhost:8080/dist
+
 Note: The final output is in the "dist" folder
 
 Running "ngrok" - To create tunnel to publish the local web server to internet
