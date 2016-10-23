@@ -1,10 +1,28 @@
 ## Project 4: Website Performance Optimization project
 
 
+<ol>
+<li>Check out the repository</li>
+<li>Install Dependencies</li>
+
+
+```bash
+  $> cd /path/to/your-project-folder
+  $> npm install 
+  ```
+
+<li>Execute GruntFile.js</li>
+
+```bash
+  $> cd /path/to/your-project-folder
+  $> grunt default 
+  ```
+  
+</ol>
+
 ### Getting started
 
 <ol>
-<li>Check out the repository</li>
 <li>Starting localhost</li>
 
   ```bash
@@ -13,6 +31,7 @@
   OR
   $> python -m http.server 8080  (if python version = 3)
   ```
+
 <li>Open a browser and visit localhost:8080/dist
    Note: The final output is in the "dist" folder</li>
 <li>Running "ngrok" - To create tunnel to publish the local web server to internet</li>
