@@ -30,7 +30,7 @@ Starting localhost
   $> python -m http.server 8080  (if python version = 3)
   ```
 
-Open a browser and visit localhost:8080/dist
+Open a browser and visit <a target="_blank" href="http://localhost:8080/dist"> http://localhost:8080/dist </a>
 
 Note: The final output is in the "dist" folder
 
