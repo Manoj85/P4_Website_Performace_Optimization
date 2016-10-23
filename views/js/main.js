@@ -399,8 +399,8 @@ var pizzaElementGenerator = function(i) {
 };
 
 // Changes the value for the size of the pizza above the slider
+var pizzaSize = document.getElementById("pizzaSize");
 function changeSliderLabel(size) {
-    var pizzaSize = document.getElementById("pizzaSize");
     switch(size) {
         case "1":
             pizzaSize.innerHTML = "Small";
@@ -435,16 +435,14 @@ function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
     var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
-
     var newSize = sizeSwitcher(size);
     var dx = (newSize - oldSize) * windowWidth;
-
     return dx;
 }
 
 // Iterates through pizza elements on the page and changes their widths
+var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
 function changePizzaSizes(size) {
-    var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzaContainer.length; i++) {
         var dx = determineDx(randomPizzaContainer[i], size);
         var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
