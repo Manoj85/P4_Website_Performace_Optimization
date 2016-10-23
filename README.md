@@ -5,8 +5,7 @@
 <li>Check out the repository</li>
 <li>Install Dependencies</li>
 
-
-```bash
+  ```bash
   $> cd /path/to/your-project-folder
   $> npm install 
   ```
