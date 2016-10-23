@@ -87,30 +87,29 @@ Implemented Grunt automation for:
 #### Part 2: Optimize Frames per Second in pizza.html
 
 ###### TL;DR
+
 <ul>
 <li>Loop optimization: unnecessary JS operations were pulled out of for loops where possible, in views/js/main.js.</li>
 <li>Debouncing: scroll events were 'debounced' to decouple the animations and only reflow/repaint when needed.</li>
 </ul>
 
-######
+###### All Steps
 
 <ul>
 <li> Moved capitalization from String.prototype.capitalize to a css rule </li>
 <li> De-nested the following function delcarations: </li>
-
 <ul>
 <li> changleSliderLabel </li>
 <li> determineDx </li>
 <li> changePizzaSizes </li>
 <li> sizedSwitcher </li>
 </ul>
-
 <li> Debounced onScroll Animation </li>
 <li> Moved DOM queries out of loops where applicable </li>
 <li> Switched for loops to stored value ( cached versions ) where applicable </li>
 <li> Switched animation from operating on left to more performant translateX property </li>
 <li> Switched # of moving pizzas from a static value to one calculated based on availwidth & availheight ( reduces overall count ) </li>
-<li> Replaced querySelector & querySelectorAll with thie more performant counterparts where applicable.
+<li> Replaced querySelector & querySelectorAll with the more performant counterparts where applicable.
 added translate3d property to moving pizza elements to force 3d acceleration** </li>
 </ul>
 
