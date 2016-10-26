@@ -87,6 +87,24 @@ Implemented Grunt automation for:
 
 #### Part 2: Optimize Frames per Second in pizza.html
 
+<table style="border-collapse: collapse">
+<tr>
+    <td colspan="2" align="center">Final Metrics</td>    
+</tr>
+<tr>
+    <td>Time to Resize Pizzas</td>
+    <td class="finalValue"> &lt; 5ms </td>
+</tr>
+<tr>
+    <td>Time to generate pizzas on load</td>
+    <td class="finalValue"> 178ms </td>
+</tr>
+<tr>
+    <td>Average scripting time to generate last 10 frames</td>
+    <td class="finalValue"> 13.900499999999942ms </td>
+</tr>
+</table>
+
 ###### TL;DR
 
 <ul>
@@ -114,6 +132,50 @@ Implemented Grunt automation for:
 added translate3d property to moving pizza elements to force 3d acceleration** </li>
 </ul>
 
+#### Summary of Grunt Tasks:
+
+###### htmlmin task
+_Run this task with the `grunt htmlmin` command._
+<ul>
+<li> Minifies the *.html files and copies to the "dist" folder</li>
+</ul>
+
+###### cssmin task
+_Run this task with the `grunt cssmin` command._
+<ul>
+<li> Minifies the *.css files and copies to the "dist" folder</li>
+</ul>
+
+###### uglify task
+_Run this task with the `grunt uglify` command._
+<ul>
+<li> Minifies the *.js files and copies to the "dist" folder</li>
+<li> Used "compress" options to compress the *.js files. Possible compress options can be found <a href="https://github.com/mishoo/UglifyJS2#compressor-options"> here </a> </li>
+</ul>
+
+
+###### uglify task
+_Run this task with the `grunt compress` command._
+<ul>
+<li> Compresses the *.html files inside the "dist" folder</li>
+</ul>
+
+###### cache_control task
+_Run this task with the `grunt cache_control` command._
+<ul>
+<li> This task automatically appends version number as ?v=1.0 to every script and link tags</li>
+<li> Note: Not able to append it to <img> tags yet. Will update when found the solution</li>
+</ul>
+
+###### replace task
+_Run this task with the `grunt replace` command._
+<ul>
+<li> This task will replace the text in the mentioned files</li>
+<li> Inside the source folder, i am loading the unminified versions of files</li>
+<span style="color: blue;"> src='js/analytics.js' </span>
+<li> When disted, the references to unminified versions inside the dist folder will be replaced with minified versions</li>
+<span style="color: blue;"> src='js/analytics.min.js' </span>
+</ul>
 
 #### Further areas of improvement
 
