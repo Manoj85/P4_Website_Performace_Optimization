@@ -178,6 +178,21 @@ module.exports = function(grunt) {
                     dojoCacheBust: true
                 }
             }
+        },
+
+        replace: {
+            my_target: {
+                src: ['dist/index.html', 'dist/views/pizza.html'],
+                overwrite: true, 
+                replacements: [{
+                    from: '.js', 
+                    to: '.min.js'
+                },
+                {
+                    from: '.css',
+                    to: '.min.css'
+                }]
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -190,5 +205,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-cache-control');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-mkdir');
-    grunt.registerTask('default', ['clean:all', 'mkdir', 'htmlmin',  'cssmin', 'uglify', 'copy', 'compress', 'cache_control', 'clean:dist']);
+    grunt.registerTask('default', ['clean:all', 'mkdir', 'htmlmin',  'cssmin', 'uglify', 'copy', 'compress', 'cache_control', 'replace']);
 };
