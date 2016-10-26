@@ -100,8 +100,11 @@ module.exports = function(grunt) {
 
         /* Clear out the images directory if it exists */
         clean: {
-            dev: {
+            all: {
                 src: ['dist','views/dist'],
+            },
+            dist: {
+                src: ['views/dist'],
             },
         },
 
@@ -111,7 +114,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     create: ['dist/img','dist/css','views/dist/css','dist/js','views/dist/js']
-                },
+                }
             }
         },
 
@@ -150,8 +153,23 @@ module.exports = function(grunt) {
                     dest: 'dist/views/',
                     expand: true
                 }]
-            },
+            }
         },
+
+        cache_control: {
+            my_target: {
+                source: "dist/index.html",
+                options: {
+                    version: "1.0",
+                    links: true,
+                    scripts: true,
+                    images: true,
+                    replace: true,
+                    ignoreCDN: true,
+                    dojoCacheBust: true
+                }
+            }
+        }
     });
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -160,7 +178,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-cache-control');
     grunt.loadNpmTasks('grunt-mkdir');
-    grunt.registerTask('default', ['clean', 'mkdir', 'htmlmin', 'compress', 'cssmin', 'uglify', 'copy']);
+    grunt.registerTask('default', ['clean:all', 'mkdir', 'htmlmin', 'compress', 'cssmin', 'uglify', 'copy', 'cache_control', 'clean:dist']);
 
 };
