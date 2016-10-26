@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'dist/index.html': 'index.html',
-                    'views/dist/pizza.html': 'views/pizza.html'
+                    'dist/views/pizza.html': 'views/pizza.html'
                 }
             }
         },
@@ -34,12 +34,21 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'views/css/',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'views/dist/css/',
+                    dest: 'dist/views/css/',
                     ext: '.min.css'
                 }]
             }
         },
         uglify: {
+            options: {
+                mangle: false,
+                compress: {
+                    drop_console: false,
+                    dead_code: true,
+                    unused: true
+                }
+            },
+
             my_target: {
                 files: [{
                     expand: true,
@@ -51,7 +60,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'views/js/',
                     src: '*.js',
-                    dest: 'views/dist/js/',
+                    dest: 'dist/views/js/',
                     ext: '.min.js'
                 }]
             }
@@ -93,7 +102,7 @@ module.exports = function(grunt) {
                     expand: true,
                     src: ['*.{gif,jpg,png,jpeg}'],
                     cwd: 'views/images',
-                    dest: 'views/dist/images/'
+                    dest: 'dist/views/images/'
                 }]
             }
         },
@@ -127,7 +136,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'dist/',
-                        src: ['index.html'],
+                        src: ['index.html', 'js/analytics.min.js'],
                         dest: '/'
                     }
                 ]
@@ -179,7 +188,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-cache-control');
+    grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-mkdir');
-    grunt.registerTask('default', ['clean:all', 'mkdir', 'htmlmin', 'compress', 'cssmin', 'uglify', 'copy', 'cache_control', 'clean:dist']);
-
+    grunt.registerTask('default', ['clean:all', 'mkdir', 'htmlmin',  'cssmin', 'uglify', 'copy', 'compress', 'cache_control', 'clean:dist']);
 };
